@@ -7,6 +7,8 @@
  * }
  */
 /**
+ * 思路: bfs遍历，通过order来控制同层元素入队顺序：push OR unshift
+ * @desc 上层从左向右,下层从右向左
  * @param {TreeNode} root
  * @return {number[][]}
  */

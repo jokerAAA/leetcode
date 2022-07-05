@@ -7,7 +7,8 @@
  * }
  */
 /**
- * @ 求树每一层的最大值
+ * 思路: bfs遍历后取每层最大值 OR 遍历过程中每一层只存最大值
+ * @desc 求树每一层的最大值
  * @param {TreeNode} root
  * @return {number[]}
  */

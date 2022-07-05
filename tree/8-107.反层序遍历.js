@@ -7,6 +7,8 @@
  * }
  */
 /**
+ * @desc 思路:层序遍历后reverse OR 层序遍历存储时用shift
+ * @desc 反层序遍历
  * @param {TreeNode} root
  * @return {number[][]}
  */

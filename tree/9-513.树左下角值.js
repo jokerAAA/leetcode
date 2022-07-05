@@ -7,26 +7,23 @@
  * }
  */
 /**
- * 思路: bfs遍历后,求出每层平均值即可
- * @desc 求二叉树每一层的平均值: 和/个数
+ * 思路: bfs遍历时反向unshift,然后取最后一层第一个值即可
+ * @desc 求出给定树左下角的值: 最深层最左侧值
  * @param {TreeNode} root
- * @return {number[]}
+ * @return {number}
  */
-var averageOfLevels = function (root) {
-  if (!root) {
-    return [];
-  }
+var findBottomLeftValue = function (root) {
   if (!root.left && !root.right) {
-    return [root.val];
+    return root.val;
   }
-  const res = [];
-  const q = [root];
+  let res = [];
+  let q = [root];
   while (q.length) {
     const currentLevel = [];
     const length = q.length;
     for (let i = 0; i < length; i++) {
       const node = q.shift();
-      if (!node) {
+      if (!root) {
         continue;
       }
       currentLevel.push(node.val);
@@ -37,11 +34,7 @@ var averageOfLevels = function (root) {
         q.push(node.right);
       }
     }
-    res.push(currentLevel);
+    res.unshift(currentLevel);
   }
-  return res.map((curLevel) => {
-    const length = curLevel.length;
-    const sum = curLevel.reduce((prev, next) => prev + next, 0);
-    return sum / length;
-  });
+  return res[0][0];
 };

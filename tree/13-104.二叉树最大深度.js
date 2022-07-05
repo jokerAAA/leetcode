@@ -7,29 +7,23 @@
  * }
  */
 /**
- * 思路: bfs遍历后,求出每层平均值即可
- * @desc 求二叉树每一层的平均值: 和/个数
+ * 思路: bfs遍历即可,每层结束深度+1
  * @param {TreeNode} root
- * @return {number[]}
+ * @return {number}
  */
-var averageOfLevels = function (root) {
+var maxDepth = function (root) {
   if (!root) {
-    return [];
+    return 0;
   }
-  if (!root.left && !root.right) {
-    return [root.val];
-  }
-  const res = [];
   const q = [root];
+  let res = 0;
   while (q.length) {
-    const currentLevel = [];
-    const length = q.length;
+    let length = q.length;
     for (let i = 0; i < length; i++) {
       const node = q.shift();
       if (!node) {
         continue;
       }
-      currentLevel.push(node.val);
       if (node.left) {
         q.push(node.left);
       }
@@ -37,11 +31,7 @@ var averageOfLevels = function (root) {
         q.push(node.right);
       }
     }
-    res.push(currentLevel);
+    res++;
   }
-  return res.map((curLevel) => {
-    const length = curLevel.length;
-    const sum = curLevel.reduce((prev, next) => prev + next, 0);
-    return sum / length;
-  });
+  return res;
 };
