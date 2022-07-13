@@ -17,7 +17,6 @@ var removeNthFromEnd = function (head, n) {
   const ans = new ListNode(null, head);
   let slow = ans;
   let fast = ans;
-  let i = 0;z
   for (let i = 0; i < n; i++) {
     fast = fast.next;
   }

@@ -16,19 +16,19 @@ var deleteDuplicates = function (head) {
     return null;
   }
   const ans = new ListNode(null, head);
-  let prev = ans;
-  let cur = prev.next;
-  while (cur) {
-    if (cur.next && cur.val === cur.next.val) {
-      while (cur.next && cur.val === cur.next.val) {
-        cur = cur.next;
+  // 用slow 和 fast的明明更贴近实际逻辑
+  let slow = ans;
+  let fast = slow.next;
+  while (fast) {
+    if (fast.next && fast.val === fast.next.val) {
+      while (fast.next && fast.val === fast.next.val) {
+        fast = fast.next;
       }
-      prev.next = cur.next;
-      // 由于数组是有序的,所以遇到cur != cur.next时,此时的元素和之前的不会重复
-      cur = cur.next;
+      slow.next = fast.next; // 这里容易写错,上一个循环结束后fast仍然是重复值,所以这里指针的指向和fast都要复制为fast.next
+      fast = fast.next;
     } else {
-      prev = prev.next;
-      cur = cur.next;
+      slow = slow.next;
+      fast = fast.next;
     }
   }
   return ans.next;

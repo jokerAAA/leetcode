@@ -19,14 +19,15 @@ var partition = function (head, x) {
 
   while (head) {
     if (head.val < x) {
-      smallNode.next = new ListNode(head.val);
+      smallNode.next = head;
       smallNode = smallNode.next;
     } else {
-      curLargeNode.next = new ListNode(head.val);
+      curLargeNode.next = head;
       curLargeNode = curLargeNode.next;
     }
     head = head.next;
   }
+  curLargeNode.next = null; // curLargeNode.next指向的还是head,这里的head是原链表,所以要手动切断
   smallNode.next = largeNode.next;
   return ans.next;
 };
