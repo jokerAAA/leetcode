@@ -27,6 +27,7 @@ var zigzagLevelOrder = function (root) {
       if (node == null) {
         continue;
       }
+      // 正向push 反向unshift
       if (order) {
         currentLevel.push(node.val);
       } else {
@@ -40,6 +41,7 @@ var zigzagLevelOrder = function (root) {
       }
     }
     res.push(currentLevel);
+    // 每层遍历结束后调整方向
     order = !order;
   }
   return res;

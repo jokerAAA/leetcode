@@ -7,7 +7,7 @@
  * }
  */
 /**
- * 思路: bfs遍历时反向unshift,然后取最后一层第一个值即可
+ * 思路: bfs遍历时，然后取最后一层第一个值即可
  * @desc 求出给定树左下角的值: 最深层最左侧值
  * @param {TreeNode} root
  * @return {number}

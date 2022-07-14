@@ -34,6 +34,7 @@ var levelOrderBottom = function (root) {
         q.push(node.right);
       }
     }
+    // 把push换成unshift
     res.unshift(levelArr);
   }
   return res;

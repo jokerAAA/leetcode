@@ -7,29 +7,25 @@
  * }
  */
 /**
- * @desc 返回二叉树右视图,即每层最右侧node的集合
+ * @desc 求二叉树最大深度
  * @param {TreeNode} root
- * @return {number[]}
+ * @return {number}
  */
-var rightSideView = function (root) {
+var maxDepth = function (root) {
   if (!root) {
-    return [];
+    return 0;
   }
   if (!root.left && !root.right) {
-    return [root.val];
+    return 1;
   }
-  const res = [];
   const q = [root];
+  const res = [];
   while (q.length) {
-    const currentLevel = [];
     const length = q.length;
+    const levelArr = [];
     for (let i = 0; i < length; i++) {
       const node = q.shift();
-      if (!node) {
-        continue;
-      }
-      // 这里把push换成unshift
-      currentLevel.unshift(node.val);
+      levelArr.push(node.val);
       if (node.left) {
         q.push(node.left);
       }
@@ -37,8 +33,7 @@ var rightSideView = function (root) {
         q.push(node.right);
       }
     }
-    res.push(currentLevel);
+    res.push(levelArr);
   }
-  console.log(res);
-  return res.map((level) => level[0]);
+  return res.length;
 };
