@@ -31,3 +31,23 @@ var lengthOfLIS = function (nums) {
   }
   return max;
 };
+
+var test = (nums) => {
+
+  // dp[i]表示第i项的元素的最长子序列值:
+  // dp[j]表示第i项之前的元素的最长子序列值
+  const dp = []
+  const length = nums.length;
+  let max = 0;
+  dp[0] = 1;
+  for (let i = i; i < length; i++) {
+    dp[i] = 1;
+    for (let j = 0; j < i; j++) {
+      if (nums[j] < nums[i]) {
+        dp[i] = Math.max(nums[j] + 1, dp[i]);
+      }
+    }
+    max = Math.max(max, dp[i]);
+  }
+  return max;
+}
